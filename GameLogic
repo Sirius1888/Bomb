@@ -1,0 +1,67 @@
+package com.example.sirius.a2x2;
+
+import android.widget.Button;
+
+
+public class GameLogic {
+    int x,y;
+    GameGrid grid;
+
+
+    public GameLogic(GameGrid grid){
+        this.grid = grid;
+        this.x = grid.x;
+        this.y = grid.y;
+    }
+
+
+
+
+    public void update(Button b, int x, int y) {
+        if (isVictory()) {
+            if (grid.getTurn().equals("p1")) {
+                if (grid.getContent(x, y) == 0) {
+                    grid.setTurn("p2");
+                    b.setText("O");
+                    grid.setMessage("p2 go ");
+                } else {
+                    b.setText("x");
+                    grid.setMessage("p1 is lose");
+                    grid.setContent(x, y, 5);
+                }
+            } else if (grid.getTurn().equals("p2")) {
+                if (grid.getContent(x, y) == 0) {
+                    grid.setTurn("p1");
+                    b.setText("O");
+                    grid.setMessage("p1 go");
+                } else {
+                    b.setText("x");
+                    grid.setMessage("p2 is lose");
+                    grid.setContent(x, y, 5);
+
+
+                }
+            }
+        }
+    }
+
+
+
+    public boolean isVictory(){
+        boolean active = true;
+
+//        if (grid.getContent(0x,1) == 5 && grid.getContent(3,2) == 5 || grid.getContent(0,1) == 5 && grid.getContent(2,0) == 5){
+//            active = false;
+//        }else if(grid.getContent(3,2) == 5 && grid.getContent(2,0) == 5){
+//            active = false;
+//        }else if(grid.getContent(2,0) == 5){
+//            active = false;
+//        }
+
+        if (grid.getContent(x,y) == 5 /*&& grid.getContent(x,y) ==5*/){
+            active = false;
+        }
+        return active;
+
+    }
+}
