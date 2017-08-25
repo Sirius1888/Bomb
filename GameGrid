@@ -1,0 +1,76 @@
+package com.example.sirius.a2x2;
+
+import android.widget.GridLayout;
+
+import java.util.Arrays;
+
+
+public class GameGrid {
+
+    private int[][] gridArray;
+    private String turn;
+    private String message;
+
+
+    public GameGrid() {
+        gridArray = new int[4][4];
+        fillArray();
+    }
+
+
+
+
+    int x = (int) (Math.random()*4);
+    int y = (int) (Math.random()*4);
+
+
+
+    public void fillArray() {
+        Arrays.fill(gridArray[0], 0);
+        Arrays.fill(gridArray[1], 0);
+        Arrays.fill(gridArray[2], 0);
+        Arrays.fill(gridArray[3], 0) ;
+
+        for (int i = 0; i<=3; i++) {
+
+            gridArray[x][y] = 1;
+        }
+        turn = "p1";
+        message = "p1 go";
+
+
+    }
+
+
+
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getTurn() {
+        return turn;
+    }
+
+    public void setTurn(String turn) {
+        this.turn = turn;
+    }
+
+
+    public int getContent(int x, int y) {
+        return gridArray[x][y];
+    }
+
+    public void setContent(int x, int y, int boom) {
+        gridArray[x][y] = boom;
+    }
+
+
+}
+
+
+
